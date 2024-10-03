@@ -1,38 +1,42 @@
-let num1=document.getElementById('number1')
-let num2=document.getElementById('number2')
-document.getElementById('add').addEventListener('click',function (){
-    add(num1.value,num2.value);
-})
-document.getElementById('subtract').addEventListener('click', function () {
-    sub(num1.value, num2.value);
+document.getElementById('add').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = add(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
 });
-document.getElementById('multiply').addEventListener('click', function () {
-    mul(num1.value, num2.value);
+document.getElementById('subtract').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = subtract(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
 });
-document.getElementById('divide').addEventListener('click', function () {
-    divd(num1.value, num2.value);
+document.getElementById('multiply').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = multiply(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
+});
+document.getElementById('divide').addEventListener('click', function() {
+    const number1 = parseFloat(document.getElementById('number1').value) || 0;
+    const number2 = parseFloat(document.getElementById('number2').value) || 0;
+    const result = divide(number1, number2);
+    document.getElementById('calculation-result').textContent = result;
 });
 
 function add(num1,num2){
-    let sum=Number(num1)+Number(num2)
-    document.getElementById('calculation-result').innerText=sum
+    return Number(num1)+Number(num2)
+} 
+function subtract(num1,num2){
+    return Number(num1) - Number(num2);  
 }
-
-
-function sub(num1,num2){
-    let difference = Number(num1) - Number(num2);
-    document.getElementById('calculation-result').innerText=difference
+function multiply(num1,num2){
+    return Number(num1)*Number(num2)
 }
-function mul(num1,num2){
-    let mul=Number(num1)*Number(num2)
-    document.getElementById('calculation-result').innerText=mul
-}
-function divd(num1, num2){
+function divide(num1,num2){
     if(num2==0){
-        document.getElementById('calculation-result').innerText="error"
+        return "error"
     }
     else{
-        let d=Number(num1)/Number(num2)
-        document.getElementById('calculation-result').innerText=d
+        return Number(num1)/Number(num2)
     }
 }
